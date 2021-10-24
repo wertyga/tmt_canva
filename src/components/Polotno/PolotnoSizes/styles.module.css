@@ -1,0 +1,60 @@
+.reverseIcon {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.input {
+  margin-bottom: 0 !important;
+}
+
+.templates {
+  overflow-y: auto;
+  height: 280px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.inputContainer :global(.ant-form-item-explain) {
+  display: none;
+}
+
+.inputs {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.sizeName {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.sizeContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #dedede;
+}
+
+.saveSizeBtn {
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 2;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .templates {
+    height: 136px;
+  }
+}
