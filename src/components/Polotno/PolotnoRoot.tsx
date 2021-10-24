@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   PolotnoContainer,
   SidePanelWrap,
@@ -66,6 +66,7 @@ import { getInfo } from '../utils/info';
 const Polotno = () => {
   const wrapper = useRef<HTMLDivElement>(null);
   const chosenTemplateRef = useRef<any>(null);
+  const addedContextMenuListenerRef = useRef(false);
   const store = useRef(createStore({ key: '3gylZuBSeYiTZ7Oxwghd', showCredit: false }));
   
   const setChosenTemplate = (template: any) => {
@@ -74,6 +75,19 @@ const Polotno = () => {
   const getChosenTemplate = () => {
     return chosenTemplateRef.current;
   };
+  
+  useEffect(() => {
+    store.current.on('change', () => {
+      if (addedContextMenuListenerRef.current) return;
+      const canvaContent = document.querySelector('.konvajs-content');
+      if (!canvaContent) return;
+  
+      addedContextMenuListenerRef.current = true;
+      canvaContent.addEventListener('contextmenu', e => {
+        e.preventDefault();
+      });
+    });
+  }, []);
   
   return (
     <div
